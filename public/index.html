@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Storage</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-box">
+      <h1>File Storage</h1>
+      <div class="tabs">
+        <button id="show-login" class="tab active" onclick="showAuthForm('login')">Вход</button>
+        <button id="show-register" class="tab" onclick="showAuthForm('register')">Регистрация</button>
+      </div>
+
+      <form id="login-form" onsubmit="onLogin(event)">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+      </form>
+
+      <form id="register-form" style="display:none" onsubmit="onRegister(event)">
+        <input type="email" id="register-email" placeholder="Email" required>
+        <input type="password" id="register-password" placeholder="Пароль (мин. 6 символов)" required minlength="6">
+        <button type="submit">Зарегистрироваться</button>
+      </form>
+
+      <p id="auth-error" class="error"></p>
+    </div>
+  </div>
+
+  <div id="app-screen" style="display:none">
+    <header>
+      <span class="logo">File Storage</span>
+      <span class="spacer"></span>
+      <span id="user-email" class="muted"></span>
+      <button onclick="onLogout()">Выйти</button>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="my" onclick="showTab('my')">Мои хранилища</button>
+      <button class="tab" data-tab="available" onclick="showTab('available')">Доступные мне</button>
+      <button class="tab" data-tab="global" onclick="showTab('global')">Глобальные</button>
+    </nav>
+
+    <main id="content"></main>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
