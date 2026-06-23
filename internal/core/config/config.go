@@ -27,8 +27,6 @@ func Load() (*Config, error) {
 		FileStoragePath: getEnv("FILE_STORAGE_PATH", "./storage"),
 	}
 
-	// Render и другие хостинги передают порт через переменную PORT.
-	// Если она задана — слушаем именно его (иначе берём HTTP_ADDR).
 	if port := os.Getenv("PORT"); port != "" {
 		cfg.HTTPAddr = ":" + port
 	}
